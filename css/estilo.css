@@ -1,0 +1,777 @@
+* {
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	list-style: none;
+	font-family: 'Poppins', sans-serif;
+	border: none;
+	box-sizing: border-box;
+}
+
+body, main {
+	background: white;
+}
+
+#estrutura {
+	position: absolute;
+	z-index: 1000;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0;
+	transition: .4s;
+}
+
+#estrutura.menuAberto {
+	animation-name: menuAbrindo;
+	animation-duration: .4s;
+	overflow-y: hidden;
+	position: fixed;
+	top: 30px;
+	right: 352px;
+	bottom: 30px;
+	left: -352px;	
+	box-shadow: 1px 1px 10px rgba(0, 0, 0, .4);
+}
+
+@keyframes menuAbrindo {
+	from {
+		top: 0px;
+		right: 0px;
+		bottom: 0px;
+		left: 0;
+	}
+}
+
+/*Gerais*/
+
+.container {
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+.container .titulo, .secao-3 .titulo {
+	font-size: 30px;	
+}
+
+/*Header*/
+
+.header {
+	background: white;
+	width: 100%;
+	min-height: 50px;
+}
+
+.header-conteudo.container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 5px 0;
+}
+
+.nav {
+	display: flex;
+}
+
+.logo {
+	width: 160px;
+	margin-top: 5px;
+}
+
+.logo-branca {
+	display: none;
+}
+
+.nav-menu {
+	position: fixed;
+	top: 50px;
+	right: 0;
+	bottom: 0px;
+	background-color: white;
+	z-index: -1;
+	width: 100%;
+}
+
+.nav-menu-item {
+	position: relative;
+	top: 25%;		
+	transform: translateX(70px);
+	padding: 0 25px;
+	transition: transform .5s;
+}
+
+#estrutura.menuAberto .nav-menu-item {
+	transform: translateX(0px);
+	transition: transform .5s;
+}
+
+.nav-menu a {
+	font-size: 30px;
+	color: #000000;
+	font-weight: 500;
+	background: transparent;
+	margin-right: 1px;
+	position: relative;
+}
+
+.nav-menu a:after {
+	background: black;
+	position: absolute;
+	content: "";
+	height: 2px;
+	bottom: 0;
+	left: 0;
+	width: 0;
+	transition: width .4s;
+}
+
+.nav-menu li:nth-child(1) a:hover:after, .nav-menu li:nth-child(1) a.active:after {
+	width: 90px;
+}
+
+.nav-menu li:nth-child(2) a:hover:after, .nav-menu li:nth-child(2) a.active:after {
+	width: 255px;
+}
+
+.nav-menu li:nth-child(3) a:hover:after, .nav-menu li:nth-child(3) a.active:after {
+	width: 72px;
+}
+
+.nav-botoes{
+	display: flex;
+}
+
+.header-conteudo ul li button{
+	font-size: 16px;
+	font-weight: 500;
+	background: transparent;
+	margin-right: 1px;
+	cursor: pointer;
+	padding: 0 10px;
+	margin-left: 10px;
+}
+
+.btn-menu-fechar {
+	border: 1px solid #AAAAAA;
+	position: absolute;
+	top: 50px;
+	right: 50px;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	font-size: 25px;
+	color: black;
+	background: #C2C1C1;
+	cursor: pointer;
+}
+
+.pesquisar {
+	visibility: hidden;
+	position: fixed;
+	top: 0px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1000;
+}
+
+.pesquisar.active {
+	visibility: visible;
+}
+
+.pesquisar-bg {
+	position: absolute;
+	background: black;
+	opacity: 0;
+	top: 0px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	transition: .3s;
+}
+
+.pesquisar.active .pesquisar-bg {
+	opacity: .5;
+}
+
+.pesquisar-filho {
+	display: block;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	padding: 20px 0;
+	background-color: white;
+	height: 120px;
+	opacity: 1;
+	transform: translateY(-30px);
+	transition: .3s;
+	opacity: 0;
+}
+
+.pesquisar-filho .container {
+	position: relative;
+}
+
+.pesquisar.active .pesquisar-filho {
+	transform: translateY(0);
+	height: 180px;
+	opacity: 1;
+	transition: .3s;
+}
+
+.pesquisar-filho input {
+	width: 100%;
+	font-size: 50px;
+	border: none;
+	border-bottom: 3px solid black;
+	border-radius:   0  0 5px 5px;
+	padding: 0 70px 5px 0;
+}
+
+.pesquisar-filho input::placeholder {
+	color: black;
+}
+
+.pesquisar-filho input:focus {
+	outline: 0;
+}
+
+.pesquisar-filho p {
+	font-size: 18px;
+	margin-top: 15px;
+	opacity: .7;
+}
+
+.pesquisar-filho .btn-pesquisar-fechar {
+	position: absolute;
+	font-size: 25px;
+	top: 22px; 
+	right: 0;
+}
+
+/*Seção 1*/
+
+.secao-1 {
+	background-image: url(../img/img1.jpg);
+	width: 100%;
+	height: calc(100vh - 50px);
+	background-size: cover;
+	background-position: center;
+}
+
+.secao-1-conteudo {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.secao-1-conteudo h1 {
+	font-size: 20px;
+	color: white;
+	letter-spacing: 1px;
+	font-weight: 400;
+	margin-bottom: 20px;
+}
+
+.secao-1-conteudo button {
+	font-size: 10px;
+	padding: 7px 11px;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: .3s;
+	transform: translateY(0);
+	transition: box-shadow .2s, transform .2s;
+}
+
+.secao-1-conteudo button:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 3px 20px rgba(0, 0, 0, .3);
+}
+
+/*Secao 2*/
+
+.secao-2-conteudo .titulo {
+	margin: 50px 0;
+}
+
+.secao-2-services-item {
+	margin-bottom: 50px;
+}
+
+.secao-2-services-item h4 {
+	font-family: Poppins;
+	font-size: 18px;
+	margin-bottom: 10px;
+	font-weight: 500;
+}
+
+.secao-2-services-item p {
+	font-weight: 400;
+	line-height: 32px;
+	font-size: 16px;
+}
+
+.secao-2-services-item i {
+	text-align: center;
+	padding-top: 11px;
+	display: block;
+	width: 70px;
+	height: 70px;
+	font-size: 50px;
+	color: blue;
+	border-radius: 50%;
+	margin-bottom: 20px;
+}
+
+/*Seção 3*/
+
+.secao-3-conteudo {
+	position: relative;
+	max-width: 1600px;
+	padding-bottom: 50px;
+}
+
+.secao-3 .titulo {
+	text-align: center;
+	font-size: 30px;
+	margin: 50px 0;
+}
+
+.owl-carousel {
+	cursor: grab;
+}
+
+.secao-3-card {
+	width: 100%;
+	max-height: 580px;
+	padding: 20px 20px 60px 20px;
+}
+
+.secao-3-card ul {
+	border-radius: 8px;
+	overflow: hidden;
+	transition: .4s;
+	padding-bottom: 30px;
+}
+
+.secao-3-card:hover ul {
+	box-shadow: 0px 40px 40px rgba(0, 0, 0, .3);
+	border-radius: 0px;
+}
+
+.secao-3-card img{
+	width: 100%;
+}
+
+.secao-3-card a {
+	color: black;
+}
+
+.secao-3-card .links {
+	transition: .3s;
+	margin-top: 30px;
+	margin-left: 10px;
+	transform: translate(10px, -10px);
+}
+
+.secao-3-card:hover .links{
+	transform: translate(0);
+}
+
+.secao-3-card h5 {
+	font-size: 15px;
+	letter-spacing: 0.5px;
+}
+
+.secao-3-card .leia-mais {
+	opacity: 0;
+	visibility: hidden;	
+	transition: .4s;
+}
+
+.secao-3-card:hover .leia-mais {
+	opacity: 1;
+	visibility: visible;
+}
+
+.secao-3-card span {
+	font-size: 12px;
+	letter-spacing: 0;
+	position: relative;
+	padding-bottom: 4px;
+}
+
+.secao-3-card span:after {
+	content: '';
+	width: 0;
+	height: 2px;
+	background: black;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	transition: .3s ease-in-out;
+}
+
+.secao-3-card span:hover:after {
+	width: 66px;
+}
+
+.botoes-carousel button {
+	width: 45px;
+	height: 45px;
+	border-radius: 50%;
+	position: absolute;
+	cursor: pointer;
+	border: 2px solid rgba(0, 0, 0, .3);
+	font-size: 30px;
+	transition: border-color .3s;
+}
+
+.botoes-carousel button:hover {
+	border-color: #3452ff;
+}
+
+.icofont-arrow-left, .icofont-arrow-right {
+	position: relative;
+	top: -2px;
+}
+
+.botoes-carousel .btn-esquerdo {
+	left: 30px;
+}
+
+.botoes-carousel .btn-direito {
+	right: 30px;
+}
+
+/*Seção 4*/
+
+.secao-4 {
+	padding: 60px 0px;
+}
+
+.secao-4-conteudo {
+	display: grid;
+}
+
+.secao-4-conteudo-item {
+	overflow-x: hidden;
+}
+
+.secao-4 h5 {
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+
+.secao-4-conteudo h2 {
+	font-size: 30px;
+	line-height: 40px;
+	font-weight: 900;
+	margin-bottom: 40px;
+}
+
+.secao-4-conteudo h2 span{
+	padding: 0 3px;
+	position: relative;
+	z-index: 1;
+}
+
+.secao-4-conteudo h2 span:after{
+	width: 100%;
+	content: "";
+	left: 0;
+	bottom: 8px;
+	position: absolute;
+	height: 8px;
+	background: #ff1053;
+	z-index: -1;
+}
+
+.owl-carousel.s-4 {
+	padding-bottom: 30px;
+}
+
+.secao-4-card {
+	padding: 10px 0;
+	cursor: grab;
+	margin-bottom: 20px;
+}
+
+.secao-4-card blockquote {
+	font-size: 18px;
+	line-height: 33px;
+}
+
+.secao-4-card-info {
+	margin-top: 30px;
+	margin-left: 60px;
+}
+
+.secao-4-card-info span {
+	display: block;
+}
+
+.secao-4-card-info .name {
+	letter-spacing: 0.5px;
+	font-size: 14px;
+	font-weight: 900;
+}
+
+.secao-4-card-info .profissao {
+	font-size: 13px;
+	letter-spacing: -0.5px;
+	color: gray;
+}
+
+/*Footer*/
+
+.footer {
+	padding: 80px 0;
+	text-align: center;
+	background-color: #C2C2C2;
+}
+
+.footer p {
+	font-size: 14px;
+}
+
+@media (min-width: 350px) {
+	/*Header*/
+
+	.nav-menu {
+		position: fixed;
+		width: 350px;
+	}
+
+	/*Seção 1*/
+
+	.secao-1-conteudo h1 {
+		max-width: 380px;	
+	}
+}
+
+@media (min-width: 480px) {
+	/*Gerais*/
+
+	.container {
+		max-width: 420px;
+		padding: 0 0;
+	}
+
+	/*Seção 1*/
+
+	.secao-1-conteudo h1 {
+		max-width: 380px;	
+	}
+}
+
+@media (min-width: 690px) {
+	/*Gerais*/
+
+	.container {
+		max-width: 600px;
+	}
+
+	.container .titulo {
+		font-size: 32px;	
+	}
+
+	/*Seção 1*/
+
+	.secao-1-conteudo h1 {
+		font-size: 35px;
+		max-width: 600px;
+	}
+
+	.secao-1-conteudo button {
+		font-size: 14px;
+		padding: 10px 30px;
+	}
+
+	/*Seção 2*/
+
+	.secao-2-services-item h4 {
+		font-size: 18px;
+	}
+
+	/*Seção 3*/
+
+	.secao-3-conteudo {
+		padding-left: 30px;
+		padding-right: 30px;
+		margin: 0 auto;
+	}
+
+	.secao-3-card {
+		padding: 20px 20px 40px 20px;
+	}
+
+	.secao-3-card:hover ul {
+		box-shadow: 0px 15px 20px rgba(0, 0, 0, .3);
+	}
+
+	.botoes-carousel button {
+		top: 0;
+	}
+}
+
+@media (min-width: 1000px) {
+	/*Gerais*/
+
+	.container {
+		max-width: 1600px;
+		padding-left: 90px;
+		padding-right: 90px;
+	}
+
+	.container .titulo, .secao-3 .titulo  {
+		font-size: 35px;
+	}
+
+	/*Header*/
+
+	.header {
+		min-height: 100px;
+		align-items: center;
+	}
+
+	.header-conteudo {
+		transform: translateY(60%);
+	}
+
+	.nav-menu {
+		position: static;
+		z-index: 1;
+		width: auto;
+	}
+
+	.nav-menu-item {
+		display: flex;
+		position: static;		
+		transform: translateX(0px);
+		padding: 0;
+		transition: transform 0s;
+	}
+
+	.nav-menu a {
+		padding: 0 25px;
+		font-size: 16px;
+	}
+
+	.nav-menu a:after {
+		position: static;
+		transition: width 0s;
+	}
+
+	.btn-menu {
+		display: none;
+	}
+
+	.btn-menu-fechar {
+		visibility: hidden;
+	}
+
+	#estrutura.menuAberto .btn-menu-fechar {
+		visibility: visible;
+		top: 0;
+		right: 20px;
+		z-index: 1000;
+	}
+
+	.pesquisar-filho .btn-pesquisar-fechar {
+		right: 90px;
+	}
+
+	/*Seção 1*/
+
+	.secao-1-conteudo h1 {
+		font-size: 50px;
+		max-width: 800px;
+		margin-bottom: 50px;
+	}
+
+	.secao-1-conteudo button {
+		font-size: 16px;
+		padding: 15px 40px;
+	}
+
+	/*Seção 2*/
+
+	.secao-2-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		column-gap: 20px;
+	}
+
+	.secao-2-services-item h4 {
+		font-size: 20px;
+	}
+
+	.secao-2-services-item p {
+		font-size: 17px;
+	}
+
+	/*Seção 4*/
+
+	.secao-4-conteudo {
+		grid-template-columns: 1fr 1fr;
+		column-gap: 20px;
+	}
+
+	.secao-4-conteudo h2 {
+		font-size: 32px;
+	}
+}
+
+@media (min-width:1200px){
+	/*Gerais*/
+
+	.container .titulo, .secao-3 .titulo  {
+		font-size: 40px;	
+	}
+
+	/*Seção 1*/
+
+	.secao-1-conteudo h1 {
+		font-size: 55px;
+		max-width: 900px;
+	}
+
+	/*Seção 2*/
+
+	.secao-2-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		column-gap: 30px;
+	}
+
+	/*Seção 4*/
+
+	.secao-4-conteudo h2 {
+		font-size: 38px;
+		line-height: 48px;
+	}
+
+	.secao-4-conteudo h2 span:after{	
+		bottom: 10px;
+	}
+}
+
+@media (min-width: 1400px) {
+
+	.container .titulo, .secao-3 .titulo {
+		font-size: 45px;	
+	}
+
+	/*Seção 4*/
+
+	.secao-4-conteudo h2 {
+		font-size: 45px;
+		line-height: 55px;
+	}
+
+	.secao-4-conteudo h2 span:after{	
+		bottom: 12px;
+	}
+}
