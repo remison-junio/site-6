@@ -634,6 +634,7 @@ body, main {
 	.header {
 		min-height: 100px;
 		align-items: center;
+		padding: 0 30px;
 	}
 
 	.header-conteudo {
@@ -674,7 +675,7 @@ body, main {
 
 	#estrutura.menuAberto .btn-menu-fechar {
 		visibility: visible;
-		top: 0;
+		top: 90px;
 		right: 20px;
 		z-index: 1000;
 	}
