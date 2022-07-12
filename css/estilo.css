@@ -18,7 +18,7 @@ body, main {
 	top: 0px;
 	right: 0px;
 	bottom: 0px;
-	left: 0;
+	left: 0px;
 	transition: .4s;
 }
 
@@ -27,11 +27,11 @@ body, main {
 	animation-duration: .4s;
 	overflow-y: hidden;
 	position: fixed;
-	top: 30px;
-	right: 352px;
-	bottom: 30px;
-	left: -352px;	
 	box-shadow: 1px 1px 10px rgba(0, 0, 0, .4);
+	top: 30px;
+	bottom: 30px;
+	right: 90%;
+	left: -90%;
 }
 
 @keyframes menuAbrindo {
@@ -39,7 +39,7 @@ body, main {
 		top: 0px;
 		right: 0px;
 		bottom: 0px;
-		left: 0;
+		left: 0px;
 	}
 }
 
@@ -59,14 +59,14 @@ body, main {
 .header {
 	background: white;
 	width: 100%;
-	min-height: 50px;
+	height: 50px;
 }
 
 .header-conteudo.container {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 5px 0;
+	padding: 7px 0 5px 10px;
 }
 
 .nav {
@@ -89,7 +89,7 @@ body, main {
 	bottom: 0px;
 	background-color: white;
 	z-index: -1;
-	width: 100%;
+	width: 90%;
 }
 
 .nav-menu-item {
@@ -105,13 +105,17 @@ body, main {
 	transition: transform .5s;
 }
 
+.nav-menu-item li + li {
+	margin-top: 5px;
+}
+
 .nav-menu a {
-	font-size: 30px;
 	color: #000000;
 	font-weight: 500;
 	background: transparent;
 	margin-right: 1px;
 	position: relative;
+	font-size: 20px;
 }
 
 .nav-menu a:after {
@@ -126,19 +130,23 @@ body, main {
 }
 
 .nav-menu li:nth-child(1) a:hover:after, .nav-menu li:nth-child(1) a.active:after {
-	width: 90px;
+	width: 100%;
 }
 
 .nav-menu li:nth-child(2) a:hover:after, .nav-menu li:nth-child(2) a.active:after {
-	width: 255px;
+	width: 100%;
 }
 
 .nav-menu li:nth-child(3) a:hover:after, .nav-menu li:nth-child(3) a.active:after {
-	width: 72px;
+	width: 100%;
 }
 
-.nav-botoes{
+.nav-botoes {
 	display: flex;
+}
+
+.nav-botoes .compras {
+	display: none;
 }
 
 .header-conteudo ul li button{
@@ -152,7 +160,7 @@ body, main {
 }
 
 .btn-menu-fechar {
-	border: 1px solid #AAAAAA;
+	border: 1px solid black;
 	position: absolute;
 	top: 50px;
 	right: 50px;
@@ -161,8 +169,8 @@ body, main {
 	height: 50px;
 	font-size: 25px;
 	color: black;
-	background: #C2C1C1;
 	cursor: pointer;
+	background: transparent;
 }
 
 .pesquisar {
@@ -194,6 +202,10 @@ body, main {
 	opacity: .5;
 }
 
+.pesquisar-filho .container {
+	position: relative;
+}
+
 .pesquisar-filho {
 	display: block;
 	position: absolute;
@@ -209,24 +221,18 @@ body, main {
 	opacity: 0;
 }
 
-.pesquisar-filho .container {
-	position: relative;
-}
-
 .pesquisar.active .pesquisar-filho {
 	transform: translateY(0);
-	height: 180px;
 	opacity: 1;
-	transition: .3s;
 }
 
 .pesquisar-filho input {
 	width: 100%;
-	font-size: 50px;
 	border: none;
 	border-bottom: 3px solid black;
-	border-radius:   0  0 5px 5px;
+	border-radius: 0 0 5px 5px;
 	padding: 0 70px 5px 0;
+	font-size: 20px;
 }
 
 .pesquisar-filho input::placeholder {
@@ -238,16 +244,28 @@ body, main {
 }
 
 .pesquisar-filho p {
-	font-size: 18px;
+	font-size: 15px;
 	margin-top: 15px;
 	opacity: .7;
 }
 
-.pesquisar-filho .btn-pesquisar-fechar {
+.pesquisar-filho .btn-pesquisar-buscar, .pesquisar-filho .btn-pesquisar-fechar {
 	position: absolute;
-	font-size: 25px;
-	top: 22px; 
-	right: 0;
+	top: 0;
+	display: none;
+	font-size: 18px;
+}
+
+.pesquisar-filho .btn-pesquisar-fechar {
+	right: 7px;
+}
+
+.pesquisar-filho .btn-pesquisar-buscar {
+	right: 10px;
+}
+
+.pesquisar-filho .btn-pesquisar-fechar.active, .btn-pesquisar-buscar.active {
+	display: block;
 }
 
 /*Seção 1*/
@@ -256,6 +274,7 @@ body, main {
 	background-image: url(../img/img1.jpg);
 	width: 100%;
 	height: calc(100vh - 50px);
+	min-height: 400px;
 	background-size: cover;
 	background-position: center;
 }
@@ -267,7 +286,7 @@ body, main {
 }
 
 .secao-1-conteudo h1 {
-	font-size: 20px;
+	font-size: 22px;
 	color: white;
 	letter-spacing: 1px;
 	font-weight: 400;
@@ -275,8 +294,8 @@ body, main {
 }
 
 .secao-1-conteudo button {
-	font-size: 10px;
-	padding: 7px 11px;
+	font-size: 12px;
+	padding: 7px 15px;
 	border-radius: 5px;
 	cursor: pointer;
 	transition: .3s;
@@ -353,11 +372,7 @@ body, main {
 	overflow: hidden;
 	transition: .4s;
 	padding-bottom: 30px;
-}
-
-.secao-3-card:hover ul {
-	box-shadow: 0px 40px 40px rgba(0, 0, 0, .3);
-	border-radius: 0px;
+	box-shadow: 0px 15px 20px rgba(0, 0, 0, .3);
 }
 
 .secao-3-card img{
@@ -369,30 +384,13 @@ body, main {
 }
 
 .secao-3-card .links {
-	transition: .3s;
 	margin-top: 30px;
 	margin-left: 10px;
-	transform: translate(10px, -10px);
-}
-
-.secao-3-card:hover .links{
-	transform: translate(0);
 }
 
 .secao-3-card h5 {
 	font-size: 15px;
 	letter-spacing: 0.5px;
-}
-
-.secao-3-card .leia-mais {
-	opacity: 0;
-	visibility: hidden;	
-	transition: .4s;
-}
-
-.secao-3-card:hover .leia-mais {
-	opacity: 1;
-	visibility: visible;
 }
 
 .secao-3-card span {
@@ -537,11 +535,19 @@ body, main {
 }
 
 @media (min-width: 350px) {
+	#estrutura.menuAberto {
+		right: 332px;
+		left: -332px;
+	}
+
 	/*Header*/
 
 	.nav-menu {
-		position: fixed;
-		width: 350px;
+		width: 332px;
+	}
+
+	.nav-menu a {
+		font-size: 30px;
 	}
 
 	/*Seção 1*/
@@ -559,6 +565,32 @@ body, main {
 		padding: 0 0;
 	}
 
+	.pesquisar-filho {
+		height: 140px;
+	}
+
+	.pesquisar-filho input {
+		font-size: 30px;
+	}
+
+	.pesquisar-filho p {
+		font-size: 18px;
+	}
+
+	.pesquisar-filho .btn-pesquisar-buscar, .pesquisar-filho .btn-pesquisar-fechar {
+		right: 0;
+	}
+
+	.pesquisar-filho .btn-pesquisar-fechar {
+		font-size: 25px;
+		top: 10px;
+	}
+
+	.pesquisar-filho .btn-pesquisar-buscar {
+		font-size: 20px;
+		top: 15px;
+	}
+
 	/*Seção 1*/
 
 	.secao-1-conteudo h1 {
@@ -568,6 +600,26 @@ body, main {
 
 @media (min-width: 690px) {
 	/*Gerais*/
+
+	.pesquisar-filho {
+		height: 150px;
+	}
+
+	.pesquisar-filho input {
+		font-size: 35px;
+	}
+
+	.pesquisar-filho p {
+		font-size: 22px;
+	}
+
+	.pesquisar-filho .btn-pesquisar-fechar {
+		top: 15px;
+	}
+
+	.pesquisar-filho .btn-pesquisar-buscar {
+		top: 12px;
+	}
 
 	.container {
 		max-width: 600px;
@@ -607,10 +659,6 @@ body, main {
 		padding: 20px 20px 40px 20px;
 	}
 
-	.secao-3-card:hover ul {
-		box-shadow: 0px 15px 20px rgba(0, 0, 0, .3);
-	}
-
 	.botoes-carousel button {
 		top: 0;
 	}
@@ -632,13 +680,14 @@ body, main {
 	/*Header*/
 
 	.header {
-		min-height: 100px;
+		height: 100px;
 		align-items: center;
 		padding: 0 30px;
 	}
 
 	.header-conteudo {
-		transform: translateY(60%);
+		position: relative;
+		top: 30px;
 	}
 
 	.nav-menu {
@@ -653,6 +702,10 @@ body, main {
 		transform: translateX(0px);
 		padding: 0;
 		transition: transform 0s;
+	}
+
+	.nav-menu-item li + li {
+		margin: 0;
 	}
 
 	.nav-menu a {
@@ -680,11 +733,31 @@ body, main {
 		z-index: 1000;
 	}
 
-	.pesquisar-filho .btn-pesquisar-fechar {
+	.pesquisar-filho {
+		height: 160px;
+	}
+
+	.pesquisar-filho input {
+		font-size: 35px;
+	}
+
+	.pesquisar-filho p {
+		font-size: 25px;
+	}
+
+	.pesquisar-filho .btn-pesquisar-fechar, .pesquisar-filho .btn-pesquisar-buscar {
 		right: 90px;
 	}
 
+	.pesquisar-filho .btn-pesquisar-buscar {
+		top: 15px;
+	}
+
 	/*Seção 1*/
+
+	.secao-1 {
+		height: calc(100vh - 100px);
+	}
 
 	.secao-1-conteudo h1 {
 		font-size: 50px;
@@ -711,6 +784,32 @@ body, main {
 
 	.secao-2-services-item p {
 		font-size: 17px;
+	}
+
+	/*Seção 3*/
+
+	.secao-3-card .links {
+		transition: .3s;
+		transform: translate(10px, -10px);
+	}
+
+	.secao-3-card:hover .links {
+		transform: translate(0);
+	}
+
+	.secao-3-card .leia-mais {
+		opacity: 0;
+		visibility: hidden;
+		transition: .4s;
+	}
+
+	.secao-3-card:hover .leia-mais {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.secao-3-card:hover ul {
+		box-shadow: 0px 20px 30px rgba(0, 0, 0, .3);
 	}
 
 	/*Seção 4*/
